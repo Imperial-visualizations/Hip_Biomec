@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!--Page Info-->
+    <title>2b</title>
+    <!--css link-->
+    <link rel="stylesheet" href="styles/skeleton.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <!--Required JS resources-->
+    <script src="scripts/plotly-1.47.4.min.js"></script>
+    <script src="scripts/p5.min.js"></script>
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <script language="javascript" type="text/javascript" src="scripts/p5.dom.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="scripts/numeric/src/numeric.js"></script>
+    <script src="scripts/math.min.js"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+        });
+    </script>
+    <!--<script type="text/javascript" src="scripts/MathJax-master/MathJax.js">
+    </script>-->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+</head>
+
+
+<body style="overflow: scroll">
+
+ 
+<h2></h2>
+  <!--Visualisation-->
+  <div id="Vis_interactive" class="" style="position: relative;width: 98vw; height: 95vh; display: flex;flex-direction: row">
+
+    <div class="five columns" style="margin-left: 2vw; margin-top: 16vh">
+        <div class="row">
+          <div id="B-slider">
+            <label for="B" class="sliderTitle">Applied B field:
+                <span id="B-display"></span>
+            </label><span class="sliderMin">0T</span>
+            <input type="range" id="B" name="B" min="0" max="30" value="15">
+            <span class="sliderMax">30T</span>
+          </div>
+
+          <div id="relative_permeability-slider">
+              <label for="relative_permeability" class="sliderTitle">Relative Permeability of Material, $\mu_r$:
+                  <span id="relative_permeability-display"></span>
+              </label><span class="sliderMin">0</span>
+              <input type="range" id="relative_permeability" name="relative_permeability" step= "0.1" min="0" max="5" value="2.5">
+              <span class="sliderMax">5</span>
+          </div>
+
+          <div id="dielectric_height-slider">
+              <label for="dielectric_height" class="sliderTitle">Material width:
+                  <span id="dielectric_height-display"></span>
+              </label><span class="sliderMin">0.2</span>
+              <input type="range" id="dielectric_height" name="dielectric_height" step = "0.1" min="0.2" max="0.7" value="0.4">
+              <span class="sliderMax">0.7</span>
+          </div>
+        </div>
+
+        <div class = "row">
+          <!--buttons to switch between vaccume and dielectic in capacitor-->
+          <div class = "five columns">
+            <div id="material-switch" name = "material-switch" class="switch">
+              <label class="radioTitle">Material</label>
+
+              <label for="vacuum" class="radio">
+                <input type="radio" id="vacuum" value="vacuum" name="material-switch" checked="checked">
+                <span>Vacuum</span>
+              </label>
+
+
+              <label for="dielectric" class="radio">
+                <input type="radio" id="dielectric" value="dielectric" name="material-switch">
+                <span>Magnetic Material</span>
+              </label>
+            </div>
+          </div>
+
+          <!--buttons to switch between fields-->
+          <div class = "four columns">
+            <div id="field-switch" name = "field-switch" class="switch">
+              <label class="radioTitle">Field Type</label>
+
+              <label for="e-field" class="radio">
+                <input type="radio" id="b-field" value="b-field" name="field-switch" checked="checked">
+                <span style="color:#0281d6; font-weight:bold"> B field </span> 
+              </label>
+
+              <label for="p-field" class="radio">
+                  <input type="radio" id="m-field" value="m-field" name="field-switch">
+                  <span style ="color:#D24000;font-weight:bold">M field</span>
+              </label>
+
+              <label for="d-field" class="radio">
+                <input type="radio" id="h-field" value="h-field" name="field-switch">
+                <span style="color:#9F004E;font-weight:bold">H field</span> 
+              </label>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="seven columns">
+      <div id = "graph"></div>
+    </div>
+
+  </div>
+
+
+
+</body>
+
+<!--THE BRAINS-->
+<script src="scripts/2bFour_Field.js"></script>
+
+</html>
